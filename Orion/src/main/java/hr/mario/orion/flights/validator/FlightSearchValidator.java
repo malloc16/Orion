@@ -42,7 +42,14 @@ public class FlightSearchValidator implements Validator {
 
 		if (search != null) {
 			log.debug("searech nije null");
-			//za datume
+			//za datume polaska
+			if(search.getDepartureDate() != null){
+//				if(dateCompare(new Date(), search.getDepartureDate())){
+					if(dateCompare2(new Date(), search.getDepartureDate()) < 0){
+					errors.rejectValue("departureDate", "error.toSmallDate.flightSearch.departureDate");
+				}
+			}
+			//za datume povratka
 			if (search.getReturnDate() != null && search.getDepartureDate() != null) {
 				if (dateCompare(search.getDepartureDate(), search.getReturnDate())) {
 					errors.rejectValue("returnDate", "error.toSmallDate.flightSearch.returnDate");
@@ -55,6 +62,8 @@ public class FlightSearchValidator implements Validator {
 			if (search.getInfantsNumber() != null) {
 				if (search.getAdultsNumber() != null && (search.getAdultsNumber() < search.getInfantsNumber())) {
 					errors.rejectValue("infantsNumber", "error.maxNumber.flightSearch.infantsNumber");
+				}else if(search.getAdultsNumber() == null){
+					errors.rejectValue("infantsNumber", "error.notEmpty.flightSearch.infantsNumber");
 				}
 			}
 			//za max broj rezultata
@@ -81,12 +90,13 @@ public class FlightSearchValidator implements Validator {
 
 		long date1 = dep.getTimeInMillis();
 		long date2 = ret.getTimeInMillis();
-		long diff = TimeUnit.MILLISECONDS.toDays(Math.abs(date2 - date1));
+//		long diff = TimeUnit.MILLISECONDS.toDays(Math.abs(date2 - date1));
+		long diff = TimeUnit.MILLISECONDS.toDays(date2 - date1);
 		log.debug("Date diff: " + diff);
 		if (diff > 2)
-			return false;
-		else
 			return true;
+		else
+			return false;
 
 	}
 
@@ -94,5 +104,25 @@ public class FlightSearchValidator implements Validator {
 		log.debug("dateCompare(dateDep, dateRet)");
 		return dateRet.getTime() - dateDep.getTime() < 0;
 	}
+	
+	/**
+	 * Raèuna razliku izmeðu datuma. Oduzima se date2 od date1.
+	 * @param date1 Prvi datum.
+	 * @param date2 Drugi datum.
+	 * @return Razlika u danima.
+	 */
+	private int dateCompare2(Date date1, Date date2) {
+		log.debug("dateCompare2(dateDep, dateRet)");
+		Calendar c1 = Calendar.getInstance();
+		c1.setTime(date1);
+		Calendar c2 = Calendar.getInstance();
+		c2.setTime(date2);
+		long date1Time = c1.getTimeInMillis();
+		long date2Time = c2.getTimeInMillis();
+		long diff = TimeUnit.MILLISECONDS.toDays(date2Time - date1Time);
+		log.debug("return (long value): " + diff);
+		return (int)diff;
+	}
+	
 
 }
