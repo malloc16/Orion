@@ -1,10 +1,5 @@
 package hr.mario.orion.flights.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import hr.mario.orion.flights.model.FlightSearch;
 import hr.mario.orion.flights.validator.FlightSearchValidator;
