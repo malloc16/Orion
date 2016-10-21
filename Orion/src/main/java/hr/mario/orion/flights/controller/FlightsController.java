@@ -73,21 +73,21 @@ public class FlightsController {
 			return "flight";
 		}
 		ra.addFlashAttribute("search", search);
-//		status.setComplete();
-//		return "redirect:Flights/results";
-		return "redirect:results";
+		status.setComplete();
+		return "results";
 	}
-	
+	/*
 	@RequestMapping(value = "/results", method = RequestMethod.GET)
 	public String success(@ModelAttribute("search") FlightSearch search, ModelMap map, HttpServletRequest request){
 		log.debug("success()");
 		log.debug(search.toString());
 		log.debug("origin: " + search.getOrigin());
 		if(search.getOrigin() == null){
-			return "redirect:/Flights";
+//			return "redirect:/Flights";
+			return "forward:/Flights";
 			
 		}
 		return "results";
 	}
-	
+	*/
 }
