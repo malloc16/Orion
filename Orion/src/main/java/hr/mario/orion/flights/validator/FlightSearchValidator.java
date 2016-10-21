@@ -18,8 +18,8 @@ import hr.mario.orion.flights.service.MessagesPropertiesFileServiceImpl;
 public class FlightSearchValidator implements Validator {
 	Logger log = Logger.getLogger(FlightSearchValidator.class);
 
-	@Autowired
-	private MessagesPropertiesFileServiceImpl msgService;
+	//@Autowired
+	//private MessagesPropertiesFileServiceImpl msgService;
 
 	@Override
 	public boolean supports(Class<?> clazz) {
