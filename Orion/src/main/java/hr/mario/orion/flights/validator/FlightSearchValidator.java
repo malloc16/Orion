@@ -12,6 +12,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import hr.mario.orion.flights.model.FlightSearch;
+import hr.mario.orion.flights.service.AirportServiceImpl;
 import hr.mario.orion.flights.service.MessagesPropertiesFileServiceImpl;
 
 @Component

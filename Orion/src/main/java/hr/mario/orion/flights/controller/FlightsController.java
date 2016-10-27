@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import hr.mario.orion.flights.model.Currency;
 import hr.mario.orion.flights.model.FlightSearch;
 import hr.mario.orion.flights.model.TravelClass;
+import hr.mario.orion.flights.service.AirportServiceImpl;
 import hr.mario.orion.flights.validator.FlightSearchValidator;
 
 @Controller
@@ -30,6 +31,9 @@ import hr.mario.orion.flights.validator.FlightSearchValidator;
 public class FlightsController {
 	
 	private static Logger log = Logger.getLogger(FlightsController.class);
+	
+	@Autowired
+	private AirportServiceImpl airportService;
 	
 	@ModelAttribute("travelClass")
 	public List<TravelClass> intTravelClass(){
@@ -68,6 +72,8 @@ public class FlightsController {
 	public String submitForm(@ModelAttribute("search") FlightSearch search, BindingResult result, SessionStatus status, RedirectAttributes ra){
 		log.debug("------------------------POST-----------------------");
 		validator.validate(search, result);
+		//test
+		airportService.ispis();
 		
 		if(result.hasErrors()){
 			return "flight";

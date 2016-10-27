@@ -1,0 +1,11 @@
+h2 {
+	color: blue;
+}
+
+.list-group {
+	max-width: 250px;
+	width: 100%;
+	color: blue;
+	margin: 1px;
+	padding: 2px;
+}
