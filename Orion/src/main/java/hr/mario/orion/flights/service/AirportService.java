@@ -14,4 +14,6 @@ public interface AirportService {
 	public List<Airport> getAirportList();
 	
 	public List<AirportLinks> getLinks();
+	
+	public List<Airport> getAirportByName(String name);
 }

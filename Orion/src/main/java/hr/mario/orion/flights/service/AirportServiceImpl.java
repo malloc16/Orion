@@ -64,5 +64,13 @@ public class AirportServiceImpl implements AirportService {
 		});
 		
 	}
+
+	@Override
+	public List<Airport> getAirportByName(String name) {
+		
+		return null;
+	}
+	
+	
 	
 }
