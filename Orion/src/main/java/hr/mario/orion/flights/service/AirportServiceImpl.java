@@ -60,7 +60,7 @@ public class AirportServiceImpl implements AirportService {
 	public void ispis() {
 		List<AirportLinks> lista = getLinks();
 		lista.forEach(s -> {
-			log.debug("URL: " + s.url + ", name: " + s.name);
+			log.debug("URL: " + s.url + ", name: " + s.name + "\n WIKI URL: " + s.urlWiki + ", WIKI name:" + s.nameWiki);
 		});
 		
 	}

@@ -20,7 +20,8 @@
 			<c:forEach var="airport" items="${airports }">
 				<!--  <li class="list-group-item">${airport}</li> <a href="${airport }" class="list-group-item">${airport }</a>-->
 				<li class="list-group-item">
-					<a href="${airport.url }">${airport.name }</a>
+					<!--<a href="${airport.url }">${airport.name }</a> -->
+					<a href="<c:url value='${airport.url }' />">${airport.name }</a>
 				</li>
 			</c:forEach>
 		</ul> 
