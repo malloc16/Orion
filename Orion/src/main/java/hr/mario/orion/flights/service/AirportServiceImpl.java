@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicToolBarUI.DockingListener;
+
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -67,8 +69,27 @@ public class AirportServiceImpl implements AirportService {
 
 	@Override
 	public List<Airport> getAirportByName(String name) {
+		log.debug("getAirportByName(" + name + ")");
+		List<Airport> lista = new ArrayList<>();
+		Document doc;
+		String urlString = "https://en.wikipedia.org/wiki/List_of_airports_by_IATA_code:_" + name; 
 		
-		return null;
+		try{
+			doc = Jsoup.connect(urlString).get();
+			Element table = doc.select("table").get(0);
+			Elements tableRow = table.select("tr");
+			tableRow.forEach(rowInTable -> {
+				Elements columns = rowInTable.select("td");
+				if(columns.size() == 6){
+					lista.add(new Airport(columns.get(0).text(), columns.get(1).text(), columns.get(2).text(), columns.get(3).text(), columns.get(4).text(), columns.get(5).text()));
+				}
+			});
+		//	System.out.println("Airports size: " + lista.size());
+		}catch (IOException e) {
+			log.debug(e.getLocalizedMessage());
+		}
+	
+		return lista;
 	}
 	
 	

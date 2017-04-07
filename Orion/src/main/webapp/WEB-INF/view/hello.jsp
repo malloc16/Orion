@@ -14,9 +14,14 @@
 <body>
 	<h2>Welcome to Orion</h2>
 	<br />
-	<input type="button" value="Idi na letove"
-		onclick="location = '/Orion/Flights/'" /><br />
+	<input type="button" value="Flight Low-Fare"
+		onclick="location = '/Orion/Flights/'" />
+	<input type="button" value="Flight Low-Fare v2"
+		onclick="location = './Flights/'" />
+	<br />
 	<input type="button" value="Zračne luke"
 		onclick="location = '/Orion/Airports/'" />
+	<input type="button" value="Zračne luke v2"
+		onclick="location = './Airports/'" />
 </body>
 </html>

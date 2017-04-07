@@ -9,3 +9,17 @@ h2 {
 	margin: 1px;
 	padding: 2px;
 }
+
+#theadName {
+	width: 400px;
+}
+
+#theadLocation {
+	width: 350px;
+}
+
+#theadIATA, #theadICAO {
+	width: 50px;
+}
+
+

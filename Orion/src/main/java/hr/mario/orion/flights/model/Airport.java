@@ -77,11 +77,19 @@ public class Airport {
 	}
 	
 	public String getStartDST(){
-		return this.getDayLightSavingTime().substring(0, this.getDayLightSavingTime().indexOf("-"));
+		if(this.getDayLightSavingTime() != null && this.getDayLightSavingTime().length() != 0){
+			return this.getDayLightSavingTime().substring(0, this.getDayLightSavingTime().indexOf("-"));
+		}else{
+			return "";
+		}
 	}
 	
 	public String getEndDST(){
-		return this.getDayLightSavingTime().substring(this.getDayLightSavingTime().indexOf("-")+1, this.getDayLightSavingTime().length());
+		if(this.getDayLightSavingTime() != null && this.getDayLightSavingTime().length() != 0){
+			return this.getDayLightSavingTime().substring(this.getDayLightSavingTime().indexOf("-")+1, this.getDayLightSavingTime().length());
+		}else{
+			return "";
+		}	
 	}
 	
 	public String getCity(){
