@@ -4,7 +4,7 @@
   margin-left: 15px;
   margin-top: 15px;
   margin-bottom: 15px;*/
-  margin: 15px;
+  margin: 2px;
   padding: 15px;
   background-color: #E8E1E1;
   border: 1px solid #000;
@@ -35,4 +35,18 @@
 h2{
 	color:red;
 	/*color: :blue;*/
+}
+
+.left-column{
+	padding: 3px;
+	background-color: orange;
+}
+
+.header-row{
+	margin: 2px 2px 10px 2px
+}
+
+.center-column{
+	background-color: aqua;
+	
 }
