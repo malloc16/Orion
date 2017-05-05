@@ -73,8 +73,8 @@ public class FlightsController {
 		log.debug("------------------------POST-----------------------");
 		validator.validate(search, result);
 		//test
-		airportService.ispis();
-		
+//		airportService.ispis();
+		log.debug(result.toString());
 		if(result.hasErrors()){
 			return "flight";
 		}
