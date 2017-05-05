@@ -3,6 +3,7 @@ package hr.mario.orion.flights.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.plaf.basic.BasicToolBarUI.DockingListener;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import hr.mario.orion.flights.model.Airport;
 import hr.mario.orion.flights.model.AirportLinks;
+import hr.mario.orion.flights.utils.StringUtils;
 
 @Service("airportService")
 public class AirportServiceImpl implements AirportService {
@@ -39,7 +41,6 @@ public class AirportServiceImpl implements AirportService {
 			Elements linkovi = airportList.select("a[href]");
 			
 			for(Element link : linkovi){
-				//lista.add(urlStart + link.attr("href"));
 				lista.add(new AirportLinks(urlStart + link.attr("href")));
 			}
 			
@@ -53,8 +54,7 @@ public class AirportServiceImpl implements AirportService {
 	public List<Airport> getAirportList(){
 		log.debug("dohvati zracne luke");
 		List<Airport> lista = new ArrayList<>();
-		
-		
+			
 		return lista;
 	}
 
@@ -81,10 +81,9 @@ public class AirportServiceImpl implements AirportService {
 			tableRow.forEach(rowInTable -> {
 				Elements columns = rowInTable.select("td");
 				if(columns.size() == 6){
-					lista.add(new Airport(columns.get(0).text(), columns.get(1).text(), columns.get(2).text(), columns.get(3).text(), columns.get(4).text(), columns.get(5).text()));
+					lista.add(new Airport(columns.get(0).text(), StringUtils.removeSquareBrackets(columns.get(1).text()), StringUtils.removeSquareBrackets(columns.get(2).text()), columns.get(3).text(), columns.get(4).text(), columns.get(5).text()));
 				}
 			});
-		//	System.out.println("Airports size: " + lista.size());
 		}catch (IOException e) {
 			log.debug(e.getLocalizedMessage());
 		}
